@@ -1,10 +1,15 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/av_action_img_Close"
-        android:title="Log"
+        android:id="@+id/item1"
+        android:title="@string/on"
         app:showAsAction="always">
     </item>
+    <item
+        android:id="@+id/item2"
+        android:title="@string/off"
+        app:showAsAction="always">
+    </item>
+
 </menu>
