@@ -36,11 +36,10 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/editTextCont"
             android:layout_marginTop="5dp"
-            tools:ignore="MissingConstraints" />
+           />
 
         <Button
             android:id="@+id/buttonFlat"
-            style="?attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/button"

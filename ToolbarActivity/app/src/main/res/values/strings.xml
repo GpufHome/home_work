@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ToolbarActivity</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="navigation_drawer_open">navigation drawer open</string>
+    <string name="navigation_drawer_close">navigation drawer close</string>
 </resources>
