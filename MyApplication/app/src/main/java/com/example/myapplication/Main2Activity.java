@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,7 +58,6 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
         imageView = findViewById(R.id.imageView);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -69,10 +67,6 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
         if (id ==  android.R.id.home) {
             Log.d("myLogs", "Home");
         }
-
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -81,5 +75,4 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
-
 }
