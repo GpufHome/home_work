@@ -11,17 +11,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.material.navigation.NavigationView;
 
 public class Main2Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawer;
     Toolbar toolbar;
     ImageView imageView;
+    FragmentManager fragmentManager;
+    FragmentTransaction transaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        fragmentManager = getSupportFragmentManager();
         initView();
         initSideMenu();
     }
@@ -41,14 +48,18 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id  = menuItem.getItemId();
         if (id ==  R.id.nav_f) {
-            imageView.setImageResource(R.drawable.f);
+            FragmentRecycler fragmentRecycler = new FragmentRecycler();
+            setFragmentMainContainer(fragmentRecycler);
         }
-
         if (id ==  R.id.nav_o) {
-            imageView.setImageResource(R.drawable.o);
+
+            FragmentRecyclerThree fragmentRecyclerThree = new FragmentRecyclerThree();
+            setFragmentMainContainer(fragmentRecyclerThree);
+
         }
         if (id ==  R.id.nav_p) {
-            imageView.setImageResource(R.drawable.p);
+            FragmentRecyclerTwo fragmentRecyclerTwo = new FragmentRecyclerTwo();
+            setFragmentMainContainer(fragmentRecyclerTwo);
         }
         drawer.closeDrawer(GravityCompat.START);
         return false;
@@ -62,7 +73,6 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         int id  = item.getItemId();
         if (id ==  android.R.id.home) {
             Log.d("myLogs", "Home");
@@ -75,4 +85,13 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
+
+    private void setFragmentMainContainer(Fragment fragment) {
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fragmentContainer, fragment);
+        transaction.commit();
+    }
+
+
 }
