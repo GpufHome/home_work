@@ -34,4 +34,6 @@ public class FAB_Hide_on_Scroll extends FloatingActionButton.Behavior {
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL;
     }
 
+
+
 }

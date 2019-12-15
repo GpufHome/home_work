@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 public class FragmentRecyclerThree extends Fragment {
     private RecyclerView recyclerView;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -21,6 +22,14 @@ public class FragmentRecyclerThree extends Fragment {
         recyclerView = viewFragment.findViewById(R.id.recyclerRepair);
         initRecyclerView();
         return  viewFragment;
+    }
+
+    static Fragment newInstance(Bundle bundle) {
+        FragmentRecyclerThree currentFragment = new FragmentRecyclerThree();
+        Bundle args = new Bundle();
+        args.putBundle("gettedArgs", bundle);
+        currentFragment.setArguments(args);
+        return currentFragment;
     }
 
     private void initRecyclerView() {
@@ -35,4 +44,7 @@ public class FragmentRecyclerThree extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
+    public FragmentRecyclerThree() {
+        // Required empty public constructor
+    }
 }

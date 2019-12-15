@@ -15,6 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class FragmentRecycler extends Fragment {
     private RecyclerView recyclerView;
+
+    static Fragment newInstance(Bundle bundle) {
+        FragmentRecycler currentFragment = new FragmentRecycler();
+        Bundle args = new Bundle();
+        args.putBundle("gettedArgs", bundle);
+        currentFragment.setArguments(args);
+        return currentFragment;
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewFragment = inflater.inflate(R.layout.fragment_recycler,
@@ -36,6 +45,10 @@ public class FragmentRecycler extends Fragment {
         MyAdapter adapter = new MyAdapter(data.getList());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+    }
+
+    public FragmentRecycler() {
+        // Required empty public constructor
     }
 
 }
