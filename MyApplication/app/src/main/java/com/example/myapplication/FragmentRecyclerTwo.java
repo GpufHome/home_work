@@ -26,6 +26,15 @@ public class FragmentRecyclerTwo extends Fragment {
         return  viewFragment;
     }
 
+
+    static Fragment newInstance(Bundle bundle) {
+        FragmentRecyclerTwo currentFragment = new FragmentRecyclerTwo();
+        Bundle args = new Bundle();
+        args.putBundle("gettedArgs", bundle);
+        currentFragment.setArguments(args);
+        return currentFragment;
+    }
+
     private void initRecyclerView() {
         LinearLayoutManager layoutManager;
         layoutManager = new LinearLayoutManager(getContext(),
@@ -38,5 +47,7 @@ public class FragmentRecyclerTwo extends Fragment {
         recyclerView.setAdapter(adapter);
 
     }
-
+    public FragmentRecyclerTwo() {
+        // Required empty public constructor
+    }
 }

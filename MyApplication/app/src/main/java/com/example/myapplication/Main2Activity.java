@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +14,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 public class Main2Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawer;
@@ -29,6 +30,23 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+
+        Fragment fragment1 = FragmentRecycler.newInstance(null);
+        Fragment fragment2 = FragmentRecyclerThree.newInstance(null);
+        Fragment fragment3 = FragmentRecyclerTwo.newInstance(null);
+
+        MyAdapterTwo myAdapter = new MyAdapterTwo(getSupportFragmentManager());
+        myAdapter.addFragment(fragment1, "tab1");
+        myAdapter.addFragment(fragment2, "tab2");
+        myAdapter.addFragment(fragment3, "tab3");
+
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.setAdapter(myAdapter);
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
+
+
         fragmentManager = getSupportFragmentManager();
         initView();
         initSideMenu();
@@ -47,22 +65,22 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        int id  = menuItem.getItemId();
-        if (id ==  R.id.nav_f) {
-            FragmentRecycler fragmentRecycler = new FragmentRecycler();
-            setFragmentMainContainer(fragmentRecycler);
-        }
-        if (id ==  R.id.nav_o) {
-
-            FragmentRecyclerThree fragmentRecyclerThree = new FragmentRecyclerThree();
-            setFragmentMainContainer(fragmentRecyclerThree);
-
-        }
-        if (id ==  R.id.nav_p) {
-            FragmentRecyclerTwo fragmentRecyclerTwo = new FragmentRecyclerTwo();
-            setFragmentMainContainer(fragmentRecyclerTwo);
-        }
-        drawer.closeDrawer(GravityCompat.START);
+//        int id  = menuItem.getItemId();
+//        if (id ==  R.id.nav_f) {
+//            FragmentRecycler fragmentRecycler = new FragmentRecycler();
+//            setFragmentMainContainer(fragmentRecycler);
+//        }
+//        if (id ==  R.id.nav_o) {
+//
+//            FragmentRecyclerThree fragmentRecyclerThree = new FragmentRecyclerThree();
+//            setFragmentMainContainer(fragmentRecyclerThree);
+//
+//        }
+//        if (id ==  R.id.nav_p) {
+//            FragmentRecyclerTwo fragmentRecyclerTwo = new FragmentRecyclerTwo();
+//            setFragmentMainContainer(fragmentRecyclerTwo);
+//        }
+//        drawer.closeDrawer(GravityCompat.START);
         return false;
     }
 
@@ -87,12 +105,12 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
-
-    private void setFragmentMainContainer(Fragment fragment) {
-        transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragmentContainer, fragment);
-        transaction.commit();
-    }
+//
+//    private void setFragmentMainContainer(Fragment fragment) {
+//        transaction = fragmentManager.beginTransaction();
+//        transaction.replace(R.id.view_pager, fragment);
+//        transaction.commit();
+//    }
 
 
 }
